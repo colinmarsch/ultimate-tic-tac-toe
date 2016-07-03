@@ -118,7 +118,7 @@ var fullWin = function(recentPlayer) {
 //end checking for wins
 
 var gamePlay = function() {
-	var player, resetButton;
+	var player, resetButton, finished;
 	var one, two, three, four, five, six, seven, eight, nine;
 	one = 0;
 	two = 0;
@@ -129,7 +129,7 @@ var gamePlay = function() {
 	seven = 0;
 	eight = 0;
 	nine = 0;
-	
+	finished = false;
 	//create the board
 	var full = document.getElementById("full");
 	full.appendChild(makeRow(0));
@@ -143,7 +143,7 @@ var gamePlay = function() {
         nextBoard = "";
     
     singleMove = function(e) {
-	var element, finished;
+	var element;
 
         e = e || event;
         target = e.target || e.srcElement;
@@ -231,7 +231,7 @@ var gamePlay = function() {
 			if(player === "X") {
 				document.getElementById("winner").innerHTML = "Player 1 has won!";	
 			} else {
-				document.getElementByID("winner").innerHTML = "Player 2 has won!";
+				document.getElementById("winner").innerHTML = "Player 2 has won!";
 			}			
 			finished = true;
 		}
@@ -275,6 +275,7 @@ var gamePlay = function() {
         nextBoard = "";
 
 	document.getElementById("winner").innerHTML = "";
+	finished = false;
     };
 
     //listener for clicks on board
